@@ -1,285 +1,220 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
-
-  <head>
-    <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>GPU Rack Systems | Own a 4-GPU AI Node for the Price of 4 Months on AWS</title>
-    <meta content="Break-even in 120 days. Rack-ready 4-GPU AI nodes with quantised stack. Ships in 14 days." name="description" />
-
-    <!-- Tailwind CSS (CDN for rapid deploy) -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#0ea5e9',
-                        dark: '#111827'
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'system-ui', 'sans-serif']
-                }
-            }
-          }
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GPU.builders – Own the Metal, Host or Ship</title>
+  <meta name="description" content="Same compute as a $250 k node for 4 months of cloud spend. Hosted or pallet-shipped in 14 days.">
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config={
+      theme:{
+        extend:{
+          colors:{primary:'#0ea5e9',dark:'#111827'},
+          fontFamily:{sans:['Inter','system-ui','sans-serif']}
         }
-    </script>
+      }
+    }
+  </script>
+  <!-- Calendly -->
+  <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript"></script>
+  <style>
+    .btn-glow{animation:pulse 2s infinite}
+    .sticky-cta{position:sticky;bottom:0;background:rgba(0,0,0,.85);backdrop-filter:blur(6px)}
+    /* Slider styling */
+    input[type=range]{-webkit-appearance:none;height:6px;border-radius:3px;background:#0ea5e9}
+    input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;height:20px;border-radius:50%;background:#0ea5e9;cursor:pointer}
+  </style>
+</head>
+<body class="bg-dark text-gray-200 font-sans">
 
-    <!-- Count-down & scroll helper -->
-    <style>
-        .btn-glow {
-            animation: pulse 2s infinite;
-        }
-        .sticky-cta {
-            position: sticky;
-            bottom: 0;
-            background: rgba(0,0,0,.85);
-            backdrop-filter: blur(6px);
-        }
-        /* Custom slider */
-        input[type=range] {
-            -webkit-appearance: none; 
-            height: 6px; 
-            border-radius: 3px;
-            background: #0ea5e9;
-        }
-        input[type=range]::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background: #0ea5e9;
-            cursor: pointer;
-        }
-    </style>
-  </head>
-
-  <body class="bg-dark text-gray-200 font-sans">
-
-    <!-- ===== HERO ===== -->
-    <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
-      <!-- bg -->
-      <div class="absolute inset-0 z-0">
-        <img alt="4-GPU rack server lights" class="w-full h-full object-cover opacity-30" src="https://images.unsplash.com/photo-1558494949-ef8459a7b8b8?auto=format&amp;fit=crop&amp;w=1950&amp;q=80" />
-        <div class="absolute inset-0 bg-gradient-to-t from-dark via-dark/70 to-transparent"></div>
-      </div>
-
-      <!-- content -->
-      <div class="relative z-10 w-full max-w-4xl mx-auto px-6 text-center flex flex-col items-center">
-        <h1 class="text-4xl md:text-5xl lg:text-7xl font-extrabold tracking-tight leading-tight mb-6">
-          Break&nbsp;Free From
-          <br /><span class="text-primary">Cloud GPU Bills</span>
-        </h1>
-        <p class="text-lg md:text-xl text-gray-300 mb-8 max-w-2xl">
-          Own a rack-ready 4-GPU AI node for
-          <strong class="text-white">$50k</strong>—break-even in
-          <strong class="text-primary">4 months</strong>. Quantised
-          stack, 6 kW, ships in 14 days.
-        </p>
-        <a class="btn-glow bg-primary text-dark px-8 py-4 rounded-lg font-bold text-lg shadow-lg hover:scale-105 transition-transform inline-block" href="#calendly">
-          Book a 15-min Audit →
-        </a>
-      </div>
-    </section>
-
-    <!-- ===== PAIN SECTION ===== -->
-    <section class="py-20 bg-gray-900/50">
-      <div class="max-w-5xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
-        <div>
-          <h2 class="text-3xl font-bold mb-4">The Hidden Cost&nbsp;of&nbsp;Cloud GPUs</h2>
-          <ul class="space-y-3 text-gray-300">
-            <li class="flex items-start">
-              <span class="text-primary mr-2">▸</span> $19&nbsp;k/month for an always-on p4d (8 × A100)
-            </li>
-            <li class="flex items-start">
-              <span class="text-primary mr-2">▸</span> 3 TB model downloads every re-start—egress $$
-            </li>
-            <li class="flex items-start">
-              <span class="text-primary mr-2">▸</span> Spot pre-emption = re-training from epoch 0
-            </li>
-          </ul>
-        </div>
-        <div>
-          <img alt="AWS cost explorer screenshot" class="rounded-lg shadow-lg" src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&amp;fit=crop&amp;w=800&amp;q=60" />
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== SOLUTION BADGES ===== -->
-    <section class="py-16">
-      <div class="max-w-6xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-        <div class="p-6 bg-gray-800/60 rounded-xl">
-          <div class="text-2xl font-bold text-primary">4-bit</div>
-          <div class="text-sm text-gray-400">Quantised Stack</div>
-        </div>
-        <div class="p-6 bg-gray-800/60 rounded-xl">
-          <div class="text-2xl font-bold text-primary">6 kW</div>
-          <div class="text-sm text-gray-400">per 4U Node</div>
-        </div>
-        <div class="p-6 bg-gray-800/60 rounded-xl">
-          <div class="text-2xl font-bold text-primary">2×10 G</div>
-          <div class="text-sm text-gray-400">Network</div>
-        </div>
-        <div class="p-6 bg-gray-800/60 rounded-xl">
-          <div class="text-2xl font-bold text-primary">14 Day</div>
-          <div class="text-sm text-gray-400">Ship Time</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== ECONOMICS SLIDER ===== -->
-    <section class="py-20 bg-gray-900/50">
-      <div class="max-w-3xl mx-auto px-6 text-center">
-        <h2 class="text-3xl font-bold mb-4">Cloud Hours You Burn per&nbsp;Month?</h2>
-        <input class="w-full my-6 accent-primary" id="cloudSlider" max="750" min="0" type="range" value="400" />
-        <div class="text-xl">
-          <span id="cloudCost">$12 000</span> / mo → Break-even in
-          <span id="breakEven" class="text-primary font-bold">4.2</span> months
-        </div>
-        <p class="text-sm text-gray-400 mt-4">Assumes AWS on-demand p4d (8 × A100) list pricing.</p>
-      </div>
-    </section>
-
-    <!-- ===== PROOF VIDEO + BENCHMARK ===== -->
-    <section class="py-20">
-      <div class="max-w-5xl mx-auto px-6 grid md:grid-cols-2 gap-10 items-center">
-        <div>
-          <h2 class="text-3xl font-bold mb-4">See It Train Llama-70B in Real&nbsp;Time</h2>
-          <div class="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden shadow-xl">
-            <iframe allow="autoplay; fullscreen" allowfullscreen="" class="w-full h-full" src="https://www.youtube.com/embed/dQw4w9WgXcQ">
-            </iframe>
-          </div>
-        </div>
-        <div>
-          <table class="w-full text-left border-collapse">
-            <thead>
-              <tr>
-                <th class="p-3 border-b border-gray-700">Framework</th>
-                <th class="p-3 border-b border-gray-700">Tokens/s</th>
-                <th class="p-3 border-b border-gray-700">VRAM</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="p-3 border-b border-gray-700">FP16 baseline</td>
-                <td class="p-3 border-b border-gray-700">147</td>
-                <td class="p-3 border-b border-gray-700">≈ 160 GB</td>
-              </tr>
-              <tr>
-                <td class="p-3 border-b border-gray-700 text-primary font-semibold">Our 4-bit quant</td>
-                <td class="p-3 border-b border-gray-700 text-primary">153</td>
-                <td class="p-3 border-b border-gray-700 text-primary">48 GB</td>
-              </tr>
-            </tbody>
-          </table>
-          <p class="text-sm text-gray-400 mt-3">Same global batch, 4× consumer GPUs.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== OFFER BOX / PIONEER TIER ===== -->
-    <section class="py-20 bg-gradient-to-br from-primary/10 to-gray-800">
-      <div class="max-w-3xl mx-auto px-6 text-center">
-        <h2 class="text-4xl font-extrabold mb-4">Pioneer Tier – Ends Soon</h2>
-        <div class="bg-dark rounded-2xl p-8 border border-primary shadow-lg">
-          <div class="text-5xl font-bold text-primary mb-2">$40 000</div>
-          <div class="text-gray-300 mb-6">
-            (normally $50 000)
-            <br />
-            <span class="text-primary font-semibold break-words">20 % discount for the first 5 orders.</span>
-          </div>
-          <ul class="text-left space-y-2 mb-8">
-            <li class="flex items-center"><span class="text-primary mr-2">✔</span> 30-day money-back guarantee</li>
-            <li class="flex items-center"><span class="text-primary mr-2">✔</span> Remote setup &amp; burn-in report</li>
-            <li class="flex items-center"><span class="text-primary mr-2">✔</span> Spare GPU module for hot-swap</li>
-          </ul>
-          <a class="btn-glow bg-primary text-dark px-8 py-4 rounded-lg font-bold text-lg hover:scale-105 transition-transform inline-block" href="#calendly">
-            Reserve My Node →
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== FAQ / OBJECTIONS ===== -->
-    <section class="py-20">
-      <div class="max-w-3xl mx-auto px-6">
-        <h2 class="text-3xl font-bold mb-8 text-center">Still Wondering?</h2>
-        <div class="space-y-6">
-          <details class="group bg-gray-800/60 p-4 rounded-lg open:bg-gray-800">
-            <summary class="font-semibold cursor-pointer select-none">Power &amp; cooling? ↓</summary>
-            <p class="mt-2 text-gray-300">Each 4U node maxes at 6 kW. We test at 35 °C inlet; your cage needs ≥ 1.5 MPa chilled water or rear-door heat-exchanger.</p>
-          </details>
-          <details class="group bg-gray-800/60 p-4 rounded-lg open:bg-gray-800">
-            <summary class="font-semibold cursor-pointer select-none">What if a GPU dies? ↓</summary>
-            <p class="mt-2 text-gray-300">Pioneer tier ships with a cold-spare module. Swap in &lt; 5 min; we cross-ship replacement overnight.</p>
-          </details>
-          <details class="group bg-gray-800/60 p-4 rounded-lg open:bg-gray-800">
-            <summary class="font-semibold cursor-pointer select-none">Financing available? ↓</summary>
-            <p class="mt-2 text-gray-300">Yes—$1 500 / mo × 36 mo (OPEX inc.). Ask on the call.</p>
-          </details>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== CTA – BOOK CALL ===== -->
-    <section class="py-20 bg-gray-900/50" id="calendly">
-      <div class="max-w-3xl mx-auto px-6 text-center">
-        <h2 class="text-4xl font-extrabold mb-4">Ready to Own the Metal?</h2>
-        <p class="text-gray-300 mb-8">
-          Pick a slot, get a spreadsheet comparing your cloud spend vs. owning the node…
-          <span class="text-primary font-semibold">all in 15 min.</span>
-        </p>
-        <!-- Calendly inline embed -->
-        <div class="calendly-inline-widget mx-auto" data-url="https://calendly.com/your-link/15min" style="min-width:320px;height:700px;"></div>
-        <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
-      </div>
-    </section>
-
-    <!-- ===== STICKY BOTTOM CTA BAR (appears on scroll-up) ===== -->
-    <div class="sticky-cta hidden md:flex items-center justify-between px-4 py-3" id="stickyCta">
-      <div class="text-sm">Break-even in 4 months — only 3 pioneer slots left.</div>
-      <a class="bg-primary text-dark px-4 py-2 rounded-md font-semibold hover:bg-white transition-colors" href="#calendly">
-        Book Call
-      </a>
+<!-- ---------- HERO ---------- -->
+<section class="relative min-h-screen flex items-center justify-center overflow-hidden">
+  <div class="absolute inset-0 z-0">
+    <img src="https://images.unsplash.com/photo-1558494949-ef8459a7b8b8?auto=format&fit=crop&w=1950&q=80" alt="Server lights" class="w-full h-full object-cover opacity-30">
+    <div class="absolute inset-0 bg-gradient-to-t from-dark via-dark/70 to-transparent"></div>
+  </div>
+  <div class="relative z-10 w-full max-w-4xl mx-auto px-6 text-center flex flex-col items-center">
+    <h1 class="text-4xl md:text-5xl lg:text-7xl font-extrabold tracking-tight leading-tight mb-6">
+      Own the Metal<br><span class="text-primary">Without the Million-Dollar Receipt</span>
+    </h1>
+    <p class="text-lg md:text-xl text-gray-300 mb-8 max-w-2xl">
+      Same compute as $250 k cloud rigs for 4 months of on-demand spend.
+      Hosted in our DC or shipped to yours—live in 14 days.
+    </p>
+    <!-- Primary CTA -->
+    <a href="#calendly" class="btn-glow bg-primary text-dark px-8 py-4 rounded-lg font-bold text-lg shadow-lg hover:scale-105 transition-transform">
+      Book build-slot →
+    </a>
+    <!-- Social proof bar -->
+    <div class="mt-12 flex flex-wrap justify-center gap-6 text-sm text-gray-400">
+      <a href="https://www.linkedin.com/in/gpu-builders-913743397/" target="_blank" rel="noopener" class="hover:text-primary">LinkedIn</a>
+      <a href="https://huggingface.co/gpubuilders" target="_blank" rel="noopener" class="hover:text-primary">Hugging Face</a>
+      <a href="https://x.com/GPUBuilders" target="_blank" rel="noopener" class="hover:text-primary">X (Twitter)</a>
+      <a href="https://cal.com/gpubuilders" target="_blank" rel="noopener" class="hover:text-primary">Cal.com</a>
     </div>
+  </div>
+</section>
 
-    <!-- ===== FOOTER ===== -->
-    <footer class="py-8 border-t border-gray-800">
-      <div class="max-w-5xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
-        <div> 2024 GPU Rack Systems. All rights reserved.</div>
-        <div class="mt-4 md:mt-0">Contact hello@gpurack.systems</div>
+<!-- ---------- PAIN / CLOUD BURN ---------- -->
+<section class="py-20 bg-gray-900/50">
+  <div class="max-w-5xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+    <div>
+      <h2 class="text-3xl font-bold mb-4">The Meter That Never Sleeps</h2>
+      <ul class="space-y-3 text-gray-300">
+        <li>▸ $19 k monthly p4d burn (8 × A100)</li>
+        <li>▸ 3 TB re-download every single run</li>
+        <li>▸ Spot pre-emption → retrain from epoch 0</li>
+      </ul>
+    </div>
+    <div>
+      <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=800&q=60" alt="AWS cost explorer" class="rounded-lg shadow-lg">
+    </div>
+  </div>
+</section>
+
+<!-- ---------- TECH BADGES ---------- -->
+<section class="py-16">
+  <div class="max-w-6xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+    <div class="p-6 bg-gray-800/60 rounded-xl"><div class="text-2xl font-bold text-primary">4-bit</div><div class="text-sm text-gray-400">quantised parity</div></div>
+    <div class="p-6 bg-gray-800/60 rounded-xl"><div class="text-2xl font-bold text-primary">6 kW</div><div class="text-sm text-gray-400">per 4U node</div></div>
+    <div class="p-6 bg-gray-800/60 rounded-xl"><div class="text-2xl font-bold text-primary">2×10 G</div><div class="text-sm text-gray-400">uplink</div></div>
+    <div class="p-6 bg-gray-800/60 rounded-xl"><div class="text-2xl font-bold text-primary">14 Day</div><div class="text-sm text-gray-400">ship</div></div>
+  </div>
+</section>
+
+<!-- ---------- ECONOMICS SLIDER ---------- -->
+<section class="py-20 bg-gray-900/50">
+  <div class="max-w-3xl mx-auto px-6 text-center">
+    <h2 class="text-3xl font-bold mb-4">Cloud Hours You Burn per Month?</h2>
+    <input id="cloudSlider" type="range" min="0" max="750" value="400" class="w-full my-6 accent-primary">
+    <div class="text-xl"><span id="cloudCost">$12 000</span> / mo → Break-even in <span id="breakEven" class="text-primary font-bold">4.2</span> months</div>
+    <p class="text-sm text-gray-400 mt-4">Assumes on-demand p4d list pricing.</p>
+  </div>
+</section>
+
+<!-- ---------- PROOF VIDEO + TABLE ---------- -->
+<section class="py-20">
+  <div class="max-w-5xl mx-auto px-6 grid md:grid-cols-2 gap-10 items-center">
+    <div>
+      <h2 class="text-3xl font-bold mb-4">Watch It Train Llama-70B in Real Time</h2>
+      <div class="aspect-video bg-slate-800 rounded-lg overflow-hidden shadow-xl flex items-center justify-center">
+        <a href="https://www.loom.com/share/YOUR_ID" target="_blank" class="text-primary underline">► 2-min demo (terminal)</a>
       </div>
-    </footer>
+    </div>
+    <div>
+      <table class="w-full text-left border-collapse">
+        <thead><tr><th class="p-3 border-b border-gray-700">Mode</th><th class="p-3 border-b border-gray-700">Tokens/s</th><th class="p-3 border-b border-gray-700">VRAM</th></tr></thead>
+        <tbody>
+          <tr><td class="p-3 border-b border-gray-700">FP16 baseline</td><td class="p-3 border-b border-gray-700">147</td><td class="p-3 border-b border-gray-700">≈160 GB</td></tr>
+          <tr><td class="p-3 border-b border-gray-700 text-primary font-semibold">Our 4-bit quant</td><td class="p-3 border-b border-gray-700 text-primary">153</td><td class="p-3 border-b border-gray-700 text-primary">48 GB</td></tr>
+        </tbody>
+      </table>
+      <p class="text-sm text-gray-400 mt-3">Same global batch, 2-to-8 consumer GPUs.</p>
+    </div>
+  </div>
+</section>
 
-    <!-- ===== SCRIPTS ===== -->
-    <script>
-        // Economics slider
-        const slider = document.getElementById('cloudSlider');
-        const costOut = document.getElementById('cloudCost');
-        const breakOut = document.getElementById('breakEven');
-        function updateCalc(){
-            const hrs = +slider.value;
-            const monthly = hrs * 32; // assume $32 per hour all-in p4d
-            const node = 50000; // $50k node
-            costOut.textContent = '$' + monthly.toLocaleString();
-            const be = (node / monthly).toFixed(1);
-            breakOut.textContent = be;
-        }
-        slider.addEventListener('input', updateCalc);
-        updateCalc();
+<!-- ---------- TWO PATHWAYS ---------- -->
+<section class="py-20 bg-gray-900/50">
+  <div class="max-w-6xl mx-auto px-6">
+    <h2 class="text-3xl font-bold text-center mb-12">Choose How You Want to Own the Compute</h2>
+    <div class="grid md:grid-cols-2 gap-8">
+      <!-- 1. Hardware Purchase -->
+      <div class="bg-gray-800/60 rounded-xl p-8 ring-1 ring-primary">
+        <h3 class="text-xl font-bold mb-2">Hardware Only</h3>
+        <p class="text-gray-300 mb-4">Buy the node, host wherever you like.</p>
+        <ul class="text-gray-300 space-y-2 mb-6">
+          <li>✓ Pre-burned 72 h</li><li>✓ Title day-one</li><li>✓ Ship or collect</li>
+        </ul>
+        <div class="text-3xl font-bold text-primary mb-6">$50 k</div>
+        <a href="#calendly" class="block text-center bg-primary text-dark px-6 py-3 rounded-lg font-semibold hover:scale-105 transition">Book purchase call →</a>
+      </div>
+      <!-- 2. Consultancy + Host -->
+      <div class="bg-gray-800/60 rounded-xl p-8">
+        <h3 class="text-xl font-bold mb-2">Consultancy + Host</h3>
+        <p class="text-gray-300 mb-4">We keep the iron, you keep the savings.</p>
+        <ul class="text-gray-300 space-y-2 mb-6">
+          <li>✓ Model porting</li><li>✓ 24×7 remote-hands</li><li>✓ One monthly invoice</li>
+        </ul>
+        <div class="text-3xl font-bold text-gray-200 mb-6">$1500–2500 / mo</div>
+        <a href="#calendly" class="block text-center bg-gray-700 hover:bg-gray-600 text-white px-6 py-3 rounded-lg font-semibold hover:scale-105 transition">Book consult call →</a>
+      </div>
+    </div>
+  </div>
+</section>
 
-        // Show sticky CTA on scroll up
-        let last = 0;
-        window.addEventListener('scroll', () => {
-            const bar = document.getElementById('stickyCta');
-            const curr = window.scrollY;
-            if (curr > 600 && curr < last) bar.classList.remove('hidden');
-            else bar.classList.add('hidden');
-            last = curr;
-        });
-    </script>
+<!-- ---------- PIONEER OFFER BOX ---------- -->
+<section class="py-20 bg-gradient-to-br from-primary/10 to-gray-800">
+  <div class="max-w-3xl mx-auto px-6 text-center">
+    <h2 class="text-4xl font-extrabold mb-4">Pioneer Tier – Only 5 Slots, 3 Left</h2>
+    <div class="bg-dark rounded-2xl p-8 ring-1 ring-primary shadow-lg">
+      <div class="text-5xl font-bold text-primary mb-2">$40 000</div>
+      <div class="text-gray-300 mb-6">20 % off list – includes 30-day guarantee & hot-spare GPU module.</div>
+      <a href="#calendly" class="btn-glow bg-primary text-dark px-8 py-4 rounded-lg font-bold text-lg hover:scale-105 transition">Claim My Pioneer Node →</a>
+    </div>
+  </div>
+</section>
 
-  </body>
+<!-- ---------- FAQ ---------- -->
+<section class="py-20">
+  <div class="max-w-3xl mx-auto px-6">
+    <h2 class="text-3xl font-bold mb-8 text-center">What Engineers Ask</h2>
+    <div class="space-y-4">
+      <details class="group bg-gray-800/60 p-4 rounded-lg open:bg-gray-800"><summary class="font-semibold cursor-pointer">Power & cooling?</summary><p class="mt-2 text-gray-300">6 kW max per 4U node—fits standard 8 kW rack budget.</p></details>
+      <details class="group bg-gray-800/60 p-4 rounded-lg open:bg-gray-800"><summary class="font-semibold cursor-pointer">GPU fails?</summary><p class="mt-2 text-gray-300">Cold-spare included; swap in &lt; 5 min, replacement overnight.</p></details>
+      <details class="group bg-gray-800/60 p-4 rounded-lg open:bg-gray-800"><summary class="font-semibold cursor-pointer">Finance terms?</summary><p class="mt-2 text-gray-300">0 % down, $1 500–2 500 / mo × 36 mo (hosting included).</p></details>
+    </div>
+  </div>
+</section>
 
+<!-- ---------- CALL BOOKING ---------- -->
+<section class="py-20 bg-gray-900/50" id="calendly">
+  <div class="max-w-3xl mx-auto px-6 text-center">
+    <h2 class="text-4xl font-extrabold mb-4">Ready to Stop Renting?</h2>
+    <p class="text-gray-300 mb-8">Pick a 15-min slot – get a spreadsheet comparing cloud vs. owning.</p>
+    <!-- Calendly inline -->
+    <div class="calendly-inline-widget mx-auto" data-url="https://cal.com/gpubuilders/15min" style="min-width:320px;height:700px;"></div>
+  </div>
+</section>
+
+<!-- ---------- STICKY BOTTOM BAR ---------- -->
+<div class="sticky-cta hidden md:flex items-center justify-between px-4 py-3" id="stickyCta">
+  <div class="text-sm">Build calendar closes in 10 days – 3 pioneer slots left.</div>
+  <a href="#calendly" class="bg-primary text-dark px-4 py-2 rounded-md font-semibold hover:bg-white transition">Book Call</a>
+</div>
+
+<!-- ---------- FOOTER ---------- -->
+<footer class="py-8 border-t border-gray-800">
+  <div class="max-w-5xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
+    <div>© 2024 GPU.builders – hello@gpu.builders</div>
+    <div class="mt-4 md:mt-0 flex gap-4">
+      <a href="https://www.linkedin.com/in/gpu-builders-913743397/" target="_blank" rel="noopener" class="hover:text-primary">LinkedIn</a>
+      <a href="https://huggingface.co/gpubuilders" target="_blank" rel="noopener" class="hover:text-primary">Hugging Face</a>
+      <a href="https://x.com/GPUBuilders" target="_blank" rel="noopener" class="hover:text-primary">X</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Slider calc
+const slider=document.getElementById('cloudSlider');
+const costOut=document.getElementById('cloudCost');
+const breakOut=document.getElementById('breakEven');
+function updateCalc(){
+    const hrs=+slider.value;
+    const monthly=hrs*32;
+    costOut.textContent='$'+monthly.toLocaleString();
+    breakOut.textContent=(50000/monthly).toFixed(1);
+}
+slider.addEventListener('input',updateCalc);updateCalc();
+// Sticky CTA on scroll-up
+let last=0;window.addEventListener('scroll',()=>{
+    const bar=document.getElementById('stickyCta');
+    const curr=window.scrollY;
+    curr>600&&curr<last?bar.classList.remove('hidden'):bar.classList.add('hidden');last=curr;
+});
+</script>
+</body>
 </html>
-```
